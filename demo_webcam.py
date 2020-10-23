@@ -23,6 +23,8 @@ else:
 yolo.size = int(args.size)
 yolo.confidence = float(args.confidence)
 
+colors = [(0, 255, 0), (0, 165, 255), (0, 0, 255)]
+
 print("starting webcam...")
 cv2.namedWindow("preview")
 vc = cv2.VideoCapture(0)
@@ -40,7 +42,7 @@ while rval:
         cy = y + (h / 2)
 
         # draw a bounding box rectangle and label on the image
-        color = (0, 255, 255)
+        color = colors[id]
         cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
         text = "%s (%s)" % (name, round(confidence, 2))
         cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,

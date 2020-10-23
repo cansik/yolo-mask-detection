@@ -27,6 +27,8 @@ else:
 yolo.size = int(args.size)
 yolo.confidence = float(args.confidence)
 
+colors = [(0, 255, 0), (0, 165, 255), (0, 0, 255)]
+
 print("extracting tags for each image...")
 if args.images.endswith(".txt"):
     with open(args.images, "r") as myfile:
@@ -61,7 +63,7 @@ for file in files:
         detection_count += 1
 
         # draw a bounding box rectangle and label on the image
-        color = (255, 0, 255)
+        color = colors[id]
         cv2.rectangle(mat, (x, y), (x + w, y + h), color, 2)
         text = "%s (%s)" % (name, round(confidence, 2))
         cv2.putText(mat, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX,
