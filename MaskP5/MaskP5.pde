@@ -10,15 +10,23 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.util.List;
 
+// speed of the yolo algorithm (trained on 416)
+int detectionSize = 128;
+
+// size of the inferenced image 
+// in relation to the original
+float sizeFactor = 1.0;
+
+// camera input width and height
+int inputWidth = 640;
+int inputHeight = 480;
+
 Capture cam;
 PImage inputImage;
 
 DeepVision deepVision = new DeepVision(this);
 YOLONetwork yolo;
 List<ObjectDetectionResult> detections;
-
-// speed of the yolo algorithm
-int detectionSize = 128;
 
 public void setup() {
   size(640, 480, FX2D);
@@ -39,10 +47,10 @@ public void setup() {
   println("Cameras: ");
   printArray(cams);
 
-  cam = new Capture(this, 640, 480, cams[0]);
+  cam = new Capture(this, inputWidth, inputHeight, cams[0]);
   cam.start();
 
-  inputImage = new PImage(320, 240, RGB);
+  inputImage = new PImage(int(inputWidth * sizeFactor), int(inputHeight * sizeFactor), RGB);
 }
 
 public void draw() {
@@ -59,7 +67,7 @@ public void draw() {
   cam.filter(GRAY);
   image(cam, 0, 0);
 
-  scale(2);
+  scale(1.0 / sizeFactor);
   for (ObjectDetectionResult detection : detections) {    
     noFill();
     strokeWeight(2f);
