@@ -8,13 +8,14 @@ import processing.video.Capture;
 
 import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.util.List;
 
 Capture cam;
 PImage inputImage;
 
 DeepVision deepVision = new DeepVision(this);
 YOLONetwork yolo;
-ResultList<ObjectDetectionResult> detections;
+List<ObjectDetectionResult> detections;
 
 // speed of the yolo algorithm
 int detectionSize = 128;
@@ -50,7 +51,7 @@ public void draw() {
   if (cam.available()) {
     cam.read();
   }
-  
+
   inputImage.copy(cam, 0, 0, cam.width, cam.height, 0, 0, inputImage.width, inputImage.height);
 
   yolo.setConfidenceThreshold(0.50f);
