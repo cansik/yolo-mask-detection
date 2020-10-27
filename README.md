@@ -2,9 +2,9 @@
 
 Fast scene mask detection for real world images based on the [darknet](https://pjreddie.com/darknet/yolo/) framework and it's [YOLOv3 Tiny PRN architecture](https://github.com/WongKinYiu/PartialResidualNetworks).
 
-![Demo](readme/nhs.jpg)
+![Demo](readme/bag.jpg)
 
-*Image Source: Royal Devon and Exeter NHS Foundation Trust*
+*Image Source: [Twitter @BAG_OFSP_UFSP](https://twitter.com/BAG_OFSP_UFSP/status/1321126674692530176)*
 
 ### Dataset
 The dataset for this pre-trained network is provided by [VictorLin000](https://github.com/VictorLin000/YOLOv3_mask_detect) and contains 678 images of people with and without masks. In total there are 3 different classes annotated:
