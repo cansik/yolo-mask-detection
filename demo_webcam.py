@@ -10,15 +10,17 @@ ap.add_argument('-s', '--size', default=416, help='Size for yolo')
 ap.add_argument('-c', '--confidence', default=0.5, help='Confidence for yolo')
 args = ap.parse_args()
 
+classes = ["good", "bad", "none"]
+
 if args.network == "normal":
-    print("loading yolo...")
-    # yolo = YOLO("models/cross-hands.cfg", "models/cross-hands.weights", ["good", "bad", "none"])
+    print("loading yolov4...")
+    yolo = YOLO("models/mask-yolov4.cfg", "models/mask-yolov4.weights", classes)
 elif args.network == "prn":
-    print("loading yolo-tiny-prn...")
-    yolo = YOLO("models/mask-yolov3-tiny-prn.cfg", "models/mask-yolov3-tiny-prn.weights", ["good", "bad", "none"])
+    print("loading yolov3-tiny-prn...")
+    yolo = YOLO("models/mask-yolov3-tiny-prn.cfg", "models/mask-yolov3-tiny-prn.weights", classes)
 else:
-    print("loading yolo-tiny...")
-    # yolo = YOLO("models/cross-hands-tiny.cfg", "models/cross-hands-tiny.weights", ["good", "bad", "none"])
+    print("loading yolov4-tiny...")
+    yolo = YOLO("models/mask-yolov4-tiny.cfg", "models/mask-yolov4-tiny.weights", classes)
 
 yolo.size = int(args.size)
 yolo.confidence = float(args.confidence)

@@ -1,6 +1,8 @@
 # YOLO Mask Detection
 
-Fast scene mask detection for real world images based on the [darknet](https://pjreddie.com/darknet/yolo/) framework and it's [YOLOv3 Tiny PRN architecture](https://github.com/WongKinYiu/PartialResidualNetworks).
+Fast scene mask detection for real world images based on the [darknet](https://pjreddie.com/darknet/yolo/) framework and it's [YOLOv3 Tiny PRN architecture](https://github.com/WongKinYiu/PartialResidualNetworks). 
+
+Now also **YOLOv4** and **YOLOv4-tiny** are supported!
 
 ![Demo](readme/bag.jpg)
 
@@ -16,9 +18,11 @@ The dataset for this pre-trained network is provided by [VictorLin000](https://g
 You can download the dataset directly from [google drive](https://drive.google.com/drive/folders/1aAXDTl5kMPKAHE08WKGP2PifIdc21-ZG).
 
 ### Training
-The model has been trained on a 1080TI for about 2h over 6000 iteration with a batch size of 64 and 16 subdivisons.
+The model has been trained on a 1080TI for about 2h over 6000 iteration with a batch size of 64 and 16 subdivisons (PRN & yolov4-tiny), 64 / 64 for yolov4.
 
 ![Char](readme/chart.png)
+
+*YOLOv3-tiny-prn / YOLOv4 / YOLOv4-tiny*
 
 To train the network yourself download the [dataset](https://drive.google.com/drive/folders/1aAXDTl5kMPKAHE08WKGP2PifIdc21-ZG), extract it into the `training` folder (`/training/yolo/Mask_1.jpg`) and download the [initial weights](https://drive.google.com/file/d/18v36esoXCh-PsOKwyP2GWrpYDptDY8Zf/view) into the `training` folder. To start the training run the following command:
 
@@ -27,9 +31,10 @@ darknet detector train obj.data yolov3-tiny-prn.cfg yolov3-tiny.conv.11
 ```
 
 After the training, the resulting weights should be in the `/training/backup/` folder.
+For instructions regarding YOLOv4, head over to [AlexeyAB/darknet](https://github.com/AlexeyAB/darknet).
 
 ### Inferencing
-The weights have been trained on an image size 416x416. It is also possible to inference it with a lower model size to increase the speed. A good performance / accuracy mix on CPUs has been discovered by using an image size of 128x128.
+The weights have been trained on an image size 416x416 (PRN & tiny) / 608x608 (YOLOv4). It is also possible to inference it with a lower model size to increase the speed. A good performance / accuracy mix on CPUs has been discovered by using an image size of 128x128.
 
 The model itself is fully compatible with the opencv dnn module and just ready to use.
 
@@ -44,6 +49,12 @@ Then run the following command to start a webcam detector with Yolov3-Tiny-PRN:
 ```python
 # with python 3
 python demo_webcam.py -n prn
+
+# yolov4
+python demo_webcam.py
+
+# yolov4-tiny
+python demo_webcam.-n tiny
 ```
 
 #### Processing
