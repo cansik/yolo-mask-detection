@@ -51,7 +51,7 @@ Then run the following command to start a webcam detector with Yolov3-Tiny-PRN:
 python demo_webcam.py -n prn
 
 # yolov4
-python demo_webcam.py
+python demo_webcam.py -s 608
 
 # yolov4-tiny
 python demo_webcam.-n tiny
