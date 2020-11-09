@@ -20,7 +20,7 @@ You can download the dataset directly from [google drive](https://drive.google.c
 ### Training
 The model has been trained on a 1080TI for about 2h over 6000 iteration with a batch size of 64 and 16 subdivisons (PRN & yolov4-tiny), 64 / 64 for yolov4.
 
-![Char](readme/chart.png)
+![Char](readme/multi-chart.png)
 
 *YOLOv3-tiny-prn / YOLOv4 / YOLOv4-tiny*
 
